@@ -62,7 +62,6 @@ const Home = () => {
         }: {
             createPostTypedData: CreatePostBroadcastItemResult
         }) {
-            console.log(createPostTypedData)
             const { id, typedData } = createPostTypedData
                 const {
                     profileId,
@@ -211,46 +210,49 @@ const Home = () => {
                         Post
                     </button>
                 </div>
-                <div className="w-1/3 border-2 rounded-lg ml-5">
-                    {
-                        activities?.map((activity: any, index) => {
-                            return (
-                                <div key={index} className="p-3 border-b-2 break-words" onClick={(event) => {
-                                    setPost((event.currentTarget.textContent!).slice(0, -4))
-                                }}>
-                                    {
-                                        activity?.type === 'mint' &&
-                                        <div>
-                                            <p>Hey Lensters,</p>
-                                            <p>I just minted {activity?.quantity} {names[index]} NFT. Check it out {`https://opensea.io/assets/ethereum/${activity?.contract_address}/${activity?.token_id}`}</p>
-                                        </div>
-                                    }{ 
-                                        activity?.type === 'sale' &&
-                                        <div>
-                                            <p>Hey Lensters,</p>
-                                            <p>I just {
-                                                activity?.buyer_address == address ? 'bought' : 'sold'
-                                                } {activity?.quantity} {names[index]} NFT for {activity?.price_details?.price}{activity?.price_details?.asset_type}. Check it out here {`https://opensea.io/assets/ethereum/${activity?.nft?.contract_address}/${activity?.nft?.token_id}`}</p>
-                                        </div>
-                                    }
-                                    {
-                                        activity?.type === 'cancel_list' && 
-                                        <div>
-                                            <p>Hey Lensters,</p>
-                                            <p>I just listed an NFT. Check it out {`https://opensea.io/assets/ethereum/${activity?.nft?.contract_address}/${activity?.nft?.token_id}`}</p>
-                                        </div>
-                                    }
-            
-                                        <button
-                                            className="text-white bg-black rounded-lg px-2 py-1 my-1">
-                                            <PencilAltIcon className="w-5 h-5 inline-block mr-1" />
-                                                Post
-                                            </button>
-                                    
-                                </div>
-                            )
-                        })
-                    }
+                <div className="w-1/3 ml-5">
+                    Recommendations
+                    <div className=" border-2 rounded-lg">
+                        {
+                            activities?.map((activity: any, index) => {
+                                return (
+                                    <div key={index} className="p-3 border-b-2 break-words" onClick={(event) => {
+                                        setPost((event.currentTarget.textContent!).slice(0, -4))
+                                    }}>
+                                        {
+                                            activity?.type === 'mint' &&
+                                            <div>
+                                                <p>Hey Lensters,</p>
+                                                <p>I just minted {activity?.quantity} {names[index]} NFT. Check it out {`https://opensea.io/assets/ethereum/${activity?.contract_address}/${activity?.token_id}`}</p>
+                                            </div>
+                                        }{ 
+                                            activity?.type === 'sale' &&
+                                            <div>
+                                                <p>Hey Lensters,</p>
+                                                <p>I just {
+                                                    activity?.buyer_address == address ? 'bought' : 'sold'
+                                                    } {activity?.quantity} {names[index]} NFT for {activity?.price_details?.price}{activity?.price_details?.asset_type}. Check it out here {`https://opensea.io/assets/ethereum/${activity?.nft?.contract_address}/${activity?.nft?.token_id}`}</p>
+                                            </div>
+                                        }
+                                        {
+                                            activity?.type === 'cancel_list' && 
+                                            <div>
+                                                <p>Hey Lensters,</p>
+                                                <p>I just listed an NFT. Check it out {`https://opensea.io/assets/ethereum/${activity?.nft?.contract_address}/${activity?.nft?.token_id}`}</p>
+                                            </div>
+                                        }
+                
+                                            <button
+                                                className="text-white bg-black rounded-lg px-2 py-1 my-1">
+                                                <PencilAltIcon className="w-5 h-5 inline-block mr-1" />
+                                                    Post
+                                                </button>
+                                        
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </>
