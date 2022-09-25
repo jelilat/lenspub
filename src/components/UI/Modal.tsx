@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-// import { XIcon } from '@heroicons/react/outline'
+import { XIcon } from '@heroicons/react/outline'
 import clsx from 'clsx'
 import React, { FC, Fragment, ReactNode } from 'react'
 
@@ -72,7 +72,7 @@ export const Modal: FC<Props> = ({
                   className="p-1 text-gray-800 rounded-full dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
                   onClick={onClose}
                 >
-                  {/* <XIcon className="w-5 h-5" /> */}
+                  <XIcon className="w-5 h-5" />
                 </button>
               </div>
               {children}

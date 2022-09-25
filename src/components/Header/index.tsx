@@ -41,9 +41,9 @@ const Header = () => {
         <SetContext />
         <div className="flex my-5 mx-14 border-b-2 p-1 font-mono">
             <div className="w-1/5 cursor-pointer">
-                <Link href="/">
+                {/* <Link href="/">
                     <Image src="/lensgame.png" width={30} height={30} alt="lensgame-marketplace" />
-                </Link>
+                </Link> */}
             </div>
             <div className="w-3/5 flex justify-center">
                
